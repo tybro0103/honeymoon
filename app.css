@@ -1,0 +1,262 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EEE;
+  color: #333;
+  overflow: hidden;
+  transition: all 500ms;
+  font-family: "Valkyrie";
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: "Valkyrie Caps";
+  font-size: 20px;
+}
+
+
+
+@font-face {
+  font-family: "Valkyrie";
+  src: url("fonts/valkyrie-regular.woff") format('woff');
+}
+@font-face {
+  font-family: "Valkyrie";
+  src: url("fonts/valkyrie-regular-italic.woff") format('woff');
+  font-style: italic;
+}
+@font-face {
+  font-family: "Valkyrie";
+  src: url("fonts/valkyrie-bold.woff") format('woff');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Valkyrie";
+  src: url("fonts/valkyrie-bold-italic.woff") format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Valkyrie Caps";
+  src: url("fonts/valkyrie-caps-regular.woff") format('woff');
+}
+@font-face {
+  font-family: "Valkyrie Caps";
+  src: url("fonts/valkyrie-caps-bold.woff") format('woff');
+  font-weight: bold;
+}
+
+
+
+@-webkit-keyframes fade-in {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.fade-in {
+  animation: fade-in 1000ms 1;
+}
+
+body.show-alb .alb { display: flex; }
+body.show-alb .ss  { display: none; }
+body.show-ss  .alb { display: none; }
+body.show-ss  .ss  { display: flex; }
+body.show-ss {
+  background-color: #333;
+  color: #EEE;
+}
+
+
+
+/*
+ * ALBUM
+ */
+
+.alb {
+  width: 100vw;
+  height: 100vh;
+  padding: 2px;
+  overflow: hidden;
+
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  /*align-items: stretch;*/
+}
+
+.alb-box {
+  width: 20%;
+  height: 20%;
+  padding: 2px;
+}
+
+.alb-box-text {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.alb-box-text h1 {
+  margin: 0;
+  font-size: 18px;
+}
+.alb-box-text p {
+  margin: 0;
+}
+.alb-box-text a {
+  border: 1px solid black;
+  padding: 3px 6px;
+  margin-top: 18px;
+}
+
+.alb-box img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/*
+ * SLIDESHOW
+ */
+
+.ss {
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.ss-main {
+  /*border: 1px solid red;*/
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  padding-bottom: 60px;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ss-main-img {
+  display: block;
+  /*border: 1px solid lime;*/
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0 0 40px 0px rgba(0,0,0,0.3);
+}
+
+.ss-controls {
+  position: fixed;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 200ms;
+}
+.ss-controls.open, .ss-controls:hover {
+  bottom: 0px;
+}
+.ss-controls-back {
+  /*color: #EEE;*/
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #666;
+  height: 100%;
+}
+
+.ss-progress {
+  flex: 1;
+  /*border: 1px solid lime;*/
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  justify-content: flex-start;
+}
+
+.ss-progress-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border: 1px solid #666;
+  border-right: none;
+  border-bottom: none;
+  cursor: pointer;
+  background-color: #444;
+  transition: all 200ms;
+  min-width: 16px;
+}
+.ss-progress-cell:last-child {
+  border-right: 1px solid #666;
+}
+.ss-progress-cell:hover {
+  background-color: #CCC;
+  color: #666;
+  min-width: 26px;
+}
+.ss-progress-cell.active {
+  background-color: #EEE;
+  border-color: #EEE;
+  color: #666;
+}
+
+
+
+/*
+ * MEDIUM
+ */
+
+@media (max-width:1199px) {
+  .alb-box {
+    width: 33.3333%;
+    height: 33.3333%;
+  }
+  .alb-box:not(.m) {
+    display: none;
+  }
+}
+
+/*
+ * SMALL
+ */
+
+@media (max-width:749px) {
+  .alb-box {
+    width: 100%;
+    height: 33.3333%;
+  }
+  .alb-box:not(.s) {
+    display: none;
+  }
+}
