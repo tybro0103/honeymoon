@@ -12,6 +12,15 @@ body {
 
 * {
   box-sizing: border-box;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  -webkit-appearance: none;
+  outline: none;
+  background-color: transparent;
+  border: none;
 }
 
 a {
@@ -182,15 +191,34 @@ body.show-ss {
 .ss-controls.open, .ss-controls:hover {
   bottom: 0px;
 }
-.ss-controls-back {
-  /*color: #EEE;*/
-  padding: 0 20px;
+
+.ss-controls-buttons {
+  border-top: 1px solid #666;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid #666;
+}
+.ss-controls-button {
   height: 100%;
+  display: block;
+  color: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 44px;
+}
+.ss-controls-button:hover {
+  background-color: #CCC;
+  color: #666;
+}
+
+.ss-controls-icon {
+  display: block;
+  width: 24px;
 }
 
 .ss-progress {
@@ -258,6 +286,24 @@ body.show-ss {
     height: 33.3333%;
   }
   .alb-box:not(.s) {
+    display: none;
+  }
+
+  .ss-main {
+    padding: 10px;
+    padding-bottom: 60px;
+  }
+
+  .ss-controls {
+    bottom: 0px;
+  }
+  .ss-controls-buttons {
+    flex: 1;
+  }
+  .ss-controls-button {
+    flex: 1;
+  }
+  .ss-progress {
     display: none;
   }
 }
