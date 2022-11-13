@@ -92,6 +92,7 @@ const startRandomFlipping = () => {
 
 const goToImg = (img) => {
   const aEl = document.createElement('a');
+  aEl.setAttribute('data-use-ps', 'true');
   aEl.href = img ? `/${img.key}` : '/';
   document.body.append(aEl);
   aEl.click();
