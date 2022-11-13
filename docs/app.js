@@ -55,7 +55,7 @@ const getVisAlbCellEls = () => {
 const getImg = () => {
   const cellEls = getVisAlbCellEls();
   const imgKeys = cellEls.map((el) => el.getAttribute('data-img-key')).filter(k => k);
-  const availImgs = images.filter(img => !imgKeys.includes(img.key));
+  const availImgs = images.filter(img => (!imgKeys.includes(img.key) && !img.hideAlbum));
   const rand = getRand(0, availImgs.length - 1);
   return availImgs[rand];
 };
