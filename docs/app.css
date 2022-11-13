@@ -215,7 +215,8 @@ body.show-ss {
   cursor: pointer;
   background-color: #444;
   transition: all 200ms;
-  min-width: 16px;
+  overflow: hidden;
+  min-width: 5px;
 }
 .ss-progress-cell:last-child {
   border-right: 1px solid #666;
@@ -223,7 +224,7 @@ body.show-ss {
 .ss-progress-cell:hover {
   background-color: #CCC;
   color: #666;
-  min-width: 26px;
+  min-width: 30px;
 }
 .ss-progress-cell.active {
   background-color: #EEE;
