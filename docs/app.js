@@ -148,7 +148,6 @@ const onPressPause = () => {
 };
 
 const onPressDownload = () => {
-  console.log('onPressDownload');
   originalLinkEl.click();
 };
 
@@ -157,7 +156,6 @@ const onPressEscape = () => {
 };
 
 const onSsImgLoad = () => {
-  console.log('------onSsImgLoad');
   fadeSsImg(ssImgEl);
 };
 
@@ -202,6 +200,7 @@ const showSlideShow = () => {
 };
 
 const onTargetKeyChange = () => {
+  document.title = targetKey ? `#${targetKey} | Tyler & Marisa Brown ❤️` : 'Tyler & Marisa Brown ❤️';
   if (targetKey) {
     showSlideShow();
 
@@ -262,17 +261,6 @@ const renderProgress = () => {
   });
 };
 
-// const handleStupidMobileHeightBug = () => {
-//   const onResize = () => {
-//     document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
-//   };
-//   setInterval(() => {
-//     onResize();
-//   }, 100);
-//   onResize();
-//   // window.addEventListener('resize', onResize);
-// };
-
 const onReady = () => {
   onChangeMql();
 
@@ -288,7 +276,6 @@ const onReady = () => {
   listenForTargetChange();
   // listenForRawClick();
   renderProgress();
-  // handleStupidMobileHeightBug();
 };
 
 onReady();
