@@ -12,11 +12,6 @@ let targetKey = null;
 let shown = 'alb'; // one of: alb, ss
 let isPlaying = false;
 
-const isTouchScreen = window.matchMedia("(pointer: coarse)").matches;
-if (isTouchScreen) {
-  document.body.classList.add('is-touch');
-}
-
 const mqlMedium = window.matchMedia('(max-width: 1199px)');
 const mqlSmall  = window.matchMedia('(max-width: 749px)');
 const onChangeMql = () => {
@@ -27,15 +22,11 @@ const onChangeMql = () => {
   })();
   if (newSize !== size) {
     size = newSize;
-    onSizeChange();
+    // onSizeChange();
   }
 };
 mqlMedium.addEventListener('change', onChangeMql);
 mqlSmall.addEventListener('change', onChangeMql);
-
-const onSizeChange = () => {
-  console.log('---- onSizeChange', size);
-};
 
 const getRand = (min, max) => {
   const range = max - min;
@@ -70,7 +61,7 @@ const fade = (el) => {
   el.classList.remove('fade-in');
   setTimeout(() => {
     el.classList.add('fade-in');
-  }, 0);  
+  }, 10);
 };
 
 const applyImg = (img, cellEl, animate=false) => {
@@ -148,6 +139,11 @@ const onPressEscape = () => {
   goToImg(null);
 };
 
+const onSsImgLoad = () => {
+  console.log('------onSsImgLoad');
+  fade(ssImgEl);
+};
+
 const listenForKeys = () => {
   document.addEventListener('keyup', (event) => {
     if (['ArrowRight', 'ArrowDown'].includes(event.code)) onPressNext();
@@ -169,10 +165,7 @@ const hijackLinks = () => {
   document.addEventListener('click', onClick);
 };
 
-// let controlsFlashed = false;
 const flashControls = () => {
-  // if (controlsFlashed) return;
-  // controlsFlashed = true;
   controlsEl.classList.add('open');
   setTimeout(() => {
     controlsEl.classList.remove('open');
@@ -207,7 +200,6 @@ const onTargetKeyChange = () => {
     if (img) {
       originalLinkEl.href = img.urlOrig;
       ssImgEl.src = img.urlLarge;
-      fade(ssImgEl);
     }
   } else {
     showAlbum();
@@ -250,6 +242,17 @@ const renderProgress = () => {
   });
 };
 
+const handleStupidMobileHeightBug = () => {
+  const onResize = () => {
+    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+  };
+  setInterval(() => {
+    onResize();
+  }, 100);
+  onResize();
+  // window.addEventListener('resize', onResize);
+};
+
 const onReady = () => {
   onChangeMql();
 
@@ -266,6 +269,7 @@ const onReady = () => {
   // listenForRawClick();
   renderProgress();
   autoPlay();
+  handleStupidMobileHeightBug();
 };
 
 onReady();

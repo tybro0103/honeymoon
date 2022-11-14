@@ -1,4 +1,15 @@
 
+:root {
+  --app-height: 100%;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  height: var(--app-height);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +19,9 @@ body {
   transition: all 500ms;
   font-family: "Valkyrie";
   font-size: 16px;
+/*  width: 100%;*/
+/*  min-height: 100vh;*/
+/*  min-height: -webkit-fill-available;*/
 }
 
 * {
@@ -94,15 +108,13 @@ body.show-ss {
  */
 
 .alb {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   padding: 2px;
   overflow: hidden;
-
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  /*align-items: stretch;*/
 }
 
 .alb-box {
@@ -148,15 +160,16 @@ body.show-ss {
  */
 
 .ss {
-  width: 100vw;
-  height: 100vh;
+/*  border: 10px solid lightblue;*/
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
 }
 
 .ss-main {
-  /*border: 1px solid red;*/
+/*  border: 10px solid red;*/
   flex: 1;
   display: flex;
   flex-direction: row;
@@ -171,7 +184,7 @@ body.show-ss {
 
 .ss-main-img {
   display: block;
-  /*border: 1px solid lime;*/
+/*  border: 1px solid lime;*/
   max-width: 100%;
   max-height: 100%;
   box-shadow: 0 0 40px 0px rgba(0,0,0,0.3);
@@ -210,8 +223,14 @@ body.show-ss {
   align-items: center;
   transition: all 200ms;
 }
-.ss-controls-con:hover .ss-controls, .ss-controls.open, body.is-touch .ss-controls {
+.ss-controls-con:hover .ss-controls, .ss-controls.open {
   bottom: 0px;
+}
+
+@media (pointer: coarse) {
+  .ss-controls {
+    bottom: 0px;
+  }
 }
 
 .ss-controls-buttons {
@@ -256,7 +275,7 @@ body.show-ss {
   height: 100%;
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow: hidden;
   justify-content: flex-start;
 }
 
@@ -270,7 +289,8 @@ body.show-ss {
   border-right: none;
   border-bottom: none;
   cursor: pointer;
-  background-color: #444;
+/*  background-color: #444;*/
+  color: #BBB;
   transition: all 200ms;
   overflow: hidden;
   min-width: 5px;
@@ -326,9 +346,16 @@ body.show-ss {
  */
 
 @media (max-width:749px) {
-  .alb-box {
+  .alb-box.center {
     width: 100%;
-    height: 33.3333%;
+    height: 50%;
+  }
+  .alb-box.s {
+    display: block;
+  }
+  .alb-box {
+    width: 33.3333%;
+    height: 25%;
   }
   .alb-box:not(.s) {
     display: none;
