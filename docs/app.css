@@ -1,13 +1,8 @@
 
-:root {
-  --app-height: 100%;
-}
-
 html,
 body {
   width: 100vw;
   height: 100vh;
-  height: var(--app-height);
 }
 
 body {
@@ -19,9 +14,8 @@ body {
   transition: all 500ms;
   font-family: "Valkyrie";
   font-size: 16px;
-/*  width: 100%;*/
-/*  min-height: 100vh;*/
-/*  min-height: -webkit-fill-available;*/
+  position: fixed;
+  height: 100%;
 }
 
 * {
@@ -344,6 +338,12 @@ body.show-ss {
 /*
  * SMALL
  */
+
+@media (max-height:499px) {
+  .ss-main {
+    padding-top: 10px;
+  }
+}
 
 @media (max-width:749px) {
   .alb-box.center {

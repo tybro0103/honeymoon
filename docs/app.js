@@ -110,18 +110,28 @@ const getTargetIndex = () => {
   return images.indexOf(targetImg);
 };
 
-const onPressNext = () => {
+const goToNext = () => {
   const targetIndex = getTargetIndex();
   if (targetIndex == null) return;
   let nextImg = images[targetIndex + 1] || images[0];
   goToImg(nextImg);
 };
 
-const onPressPrev = () => {
+const goToPrev = () => {
   const targetIndex = getTargetIndex();
   if (targetIndex == null) return;
   let nextImg = images[targetIndex - 1] || images[images.length - 1];
   goToImg(nextImg);
+};
+
+const onPressNext = () => {
+  if (isPlaying) autoPlay();
+  goToNext();
+};
+
+const onPressPrev = () => {
+  if (isPlaying) autoPlay();
+  goToPrev();
 };
 
 const onPressPlay = () => {
@@ -236,7 +246,7 @@ let apInternal;
 const autoPlay = () => {
   clearInterval(apInternal);
   apInternal = setInterval(() => {
-    if (isPlaying) onPressNext();
+    if (isPlaying) goToNext();
   }, 5000);
 };
 
@@ -252,16 +262,16 @@ const renderProgress = () => {
   });
 };
 
-const handleStupidMobileHeightBug = () => {
-  const onResize = () => {
-    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
-  };
-  setInterval(() => {
-    onResize();
-  }, 100);
-  onResize();
-  // window.addEventListener('resize', onResize);
-};
+// const handleStupidMobileHeightBug = () => {
+//   const onResize = () => {
+//     document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+//   };
+//   setInterval(() => {
+//     onResize();
+//   }, 100);
+//   onResize();
+//   // window.addEventListener('resize', onResize);
+// };
 
 const onReady = () => {
   onChangeMql();
@@ -278,7 +288,7 @@ const onReady = () => {
   listenForTargetChange();
   // listenForRawClick();
   renderProgress();
-  handleStupidMobileHeightBug();
+  // handleStupidMobileHeightBug();
 };
 
 onReady();
