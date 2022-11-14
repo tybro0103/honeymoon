@@ -128,14 +128,13 @@ const onPressPlay = () => {
   controlsEl.classList.remove('playing-no');
   controlsEl.classList.add('playing-yes');
   isPlaying = true;
-  console.log('onPressPlay');
+  autoPlay();
 };
 
 const onPressPause = () => {
   controlsEl.classList.remove('playing-yes');
   controlsEl.classList.add('playing-no');
   isPlaying = false;
-  console.log('onPressPause');
 };
 
 const onPressDownload = () => {
@@ -233,8 +232,10 @@ const listenForRawClick = () => {
   });
 };
 
+let apInternal;
 const autoPlay = () => {
-  setInterval(() => {
+  clearInterval(apInternal);
+  apInternal = setInterval(() => {
     if (isPlaying) onPressNext();
   }, 5000);
 };
@@ -277,7 +278,6 @@ const onReady = () => {
   listenForTargetChange();
   // listenForRawClick();
   renderProgress();
-  autoPlay();
   handleStupidMobileHeightBug();
 };
 
