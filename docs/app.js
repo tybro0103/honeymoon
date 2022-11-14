@@ -61,7 +61,15 @@ const fade = (el) => {
   el.classList.remove('fade-in');
   setTimeout(() => {
     el.classList.add('fade-in');
-  }, 10);
+  }, 5);
+};
+
+const fadeSsImg = (el) => {
+  el.classList.remove('fade-in');
+  setTimeout(() => {
+    ssImgEl.style.display = 'block';
+    el.classList.add('fade-in');
+  }, 5);
 };
 
 const applyImg = (img, cellEl, animate=false) => {
@@ -141,7 +149,7 @@ const onPressEscape = () => {
 
 const onSsImgLoad = () => {
   console.log('------onSsImgLoad');
-  fade(ssImgEl);
+  fadeSsImg(ssImgEl);
 };
 
 const listenForKeys = () => {
@@ -199,6 +207,7 @@ const onTargetKeyChange = () => {
     const img = images.find(img => img.key === targetKey);
     if (img) {
       originalLinkEl.href = img.urlOrig;
+      ssImgEl.style.display = 'none';
       ssImgEl.src = img.urlLarge;
     }
   } else {
