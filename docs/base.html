@@ -51,7 +51,7 @@
         <div class="alb-box-text">
           <h1>Tyler & Marisa Brown</h1>
           <p>October 29, 2022</p>
-          <a href="/1" data-use-ps="true">View →</a>
+          <a href="/1" data-use-ps="true" onClick="onPressPlay()">View →</a>
         </div>
       </div>
       <div class="alb-box s m l"><a data-use-ps="true"><img />
@@ -84,74 +84,78 @@
       <div class="ss-main" target="blank">
         <img class="ss-main-img" />
       </div>
-      <div class="ss-controls">
-        <div class="ss-controls-buttons">
+      <button class="ss-prev-con" onClick="onPressPrev()"></button>
+      <button class="ss-next-con" onClick="onPressNext()"></button>
+      <div class="ss-controls-con">
+        <div class="ss-controls playing-no">
+          <div class="ss-controls-buttons">
 
-          <a class="ss-controls-button button-home" href="/" data-use-ps="true" title="Back to Main Page">
-            <svg viewBox="0 0 24 24" class="ss-controls-icon">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="11.5" />
-                <line x1="17.5" y1="18.874" x2="17.5" y2="10.585" />
-                <path d="M9.5,20V15.773a.5.5,0,0,1,.5-.5h4a.5.5,0,0,1,.5.5V20" />
-                <line x1="6.5" y1="10.585" x2="6.5" y2="18.874" />
-                <path d="M4,12.773l7.341-6.424a1,1,0,0,1,1.318,0L20,12.773" />
-                <circle cx="12" cy="10.773" r="1.5" />
-              </g>
-            </svg>
-          </a>
+            <a class="ss-controls-button button-home" href="/" data-use-ps="true" title="Back to Main Page">
+              <svg viewBox="0 0 24 24" class="ss-controls-icon">
+                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="11.5" />
+                  <line x1="17.5" y1="18.874" x2="17.5" y2="10.585" />
+                  <path d="M9.5,20V15.773a.5.5,0,0,1,.5-.5h4a.5.5,0,0,1,.5.5V20" />
+                  <line x1="6.5" y1="10.585" x2="6.5" y2="18.874" />
+                  <path d="M4,12.773l7.341-6.424a1,1,0,0,1,1.318,0L20,12.773" />
+                  <circle cx="12" cy="10.773" r="1.5" />
+                </g>
+              </svg>
+            </a>
 
-          <button class="ss-controls-button button-pause" title="Pause">
-            <svg viewBox="0 0 24 24" class="ss-controls-icon">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="11.999" r="11.5" />
-                <rect x="7.5" y="7.499" width="3" height="10" rx="1" ry="1" />
-                <rect x="13.5" y="7.499" width="3" height="10" rx="1" ry="1" />
-              </g>
-            </svg>
-          </button>
+            <button class="ss-controls-button button-pause" title="Pause" onClick="onPressPause()">
+              <svg viewBox="0 0 24 24" class="ss-controls-icon">
+                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="11.999" r="11.5" />
+                  <rect x="7.5" y="7.499" width="3" height="10" rx="1" ry="1" />
+                  <rect x="13.5" y="7.499" width="3" height="10" rx="1" ry="1" />
+                </g>
+              </svg>
+            </button>
 
-          <button class="ss-controls-button button-play" title="Play">
-            <svg viewBox="0 0 24 24" class="ss-controls-icon">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12.04" cy="11.999" r="11.5" />
-                <path d="M9.434,8.446A.569.569,0,0,0,8.54,9v7a.569.569,0,0,0,.894.553l7.212-3.606c.491-.246.491-.648,0-.894Z" />
-              </g>
-            </svg>
-          </button>
+            <button class="ss-controls-button button-play" title="Play" onClick="onPressPlay()">
+              <svg viewBox="0 0 24 24" class="ss-controls-icon">
+                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12.04" cy="11.999" r="11.5" />
+                  <path d="M9.434,8.446A.569.569,0,0,0,8.54,9v7a.569.569,0,0,0,.894.553l7.212-3.606c.491-.246.491-.648,0-.894Z" />
+                </g>
+              </svg>
+            </button>
 
-          <button class="ss-controls-button button-prev" onClick="onPressPrev()" title="Previous Image">
-            <svg viewBox="0 0 24 24" class="ss-controls-icon">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="11.998" r="11" />
-                <line x1="18" y1="11.998" x2="5" y2="11.998" />
-                <polyline points="9.5 16.498 5 11.998 9.5 7.498" />
-              </g>
-            </svg>
-          </button>
+            <button class="ss-controls-button button-prev" onClick="onPressPrev()" title="Previous Image">
+              <svg viewBox="0 0 24 24" class="ss-controls-icon">
+                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="11.998" r="11" />
+                  <line x1="18" y1="11.998" x2="5" y2="11.998" />
+                  <polyline points="9.5 16.498 5 11.998 9.5 7.498" />
+                </g>
+              </svg>
+            </button>
 
-          <button class="ss-controls-button button-next" onClick="onPressNext()" title="Next Image">
-            <svg viewBox="0 0 24 24" class="ss-controls-icon">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="11.998" r="11" />
-                <line x1="6" y1="11.998" x2="19" y2="11.998" />
-                <polyline points="14.5 7.498 19 11.998 14.5 16.498" />
-              </g>
-            </svg>
-          </button>
+            <button class="ss-controls-button button-next" onClick="onPressNext()" title="Next Image">
+              <svg viewBox="0 0 24 24" class="ss-controls-icon">
+                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="11.998" r="11" />
+                  <line x1="6" y1="11.998" x2="19" y2="11.998" />
+                  <polyline points="14.5 7.498 19 11.998 14.5 16.498" />
+                </g>
+              </svg>
+            </button>
 
-          <button class="ss-controls-button button-download" title="Download Image">
-            <svg viewBox="0 0 24 24" class="ss-controls-icon">
-              <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="11" />
-                <line x1="12" y1="18.5" x2="12" y2="5.5" />
-                <polyline points="17.5 13 12 18.5 6.5 13" />
-              </g>
-            </svg>
-          </button>
+            <button class="ss-controls-button button-download" onClick="onPressDownload()" title="Download Image">
+              <svg viewBox="0 0 24 24" class="ss-controls-icon">
+                <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="11" />
+                  <line x1="12" y1="18.5" x2="12" y2="5.5" />
+                  <polyline points="17.5 13 12 18.5 6.5 13" />
+                </g>
+              </svg>
+            </button>
 
+          </div>
+
+          <div class="ss-progress"></div>
         </div>
-
-        <div class="ss-progress"></div>
       </div>
     </div>
 

@@ -10,6 +10,12 @@ const originalLinkEl = document.querySelector('.original-link');
 let size = 'm';
 let targetKey = null;
 let shown = 'alb'; // one of: alb, ss
+let isPlaying = false;
+
+const isTouchScreen = window.matchMedia("(pointer: coarse)").matches;
+if (isTouchScreen) {
+  document.body.classList.add('is-touch');
+}
 
 const mqlMedium = window.matchMedia('(max-width: 1199px)');
 const mqlSmall  = window.matchMedia('(max-width: 749px)');
@@ -119,6 +125,25 @@ const onPressPrev = () => {
   goToImg(nextImg);
 };
 
+const onPressPlay = () => {
+  controlsEl.classList.remove('playing-no');
+  controlsEl.classList.add('playing-yes');
+  isPlaying = true;
+  console.log('onPressPlay');
+};
+
+const onPressPause = () => {
+  controlsEl.classList.remove('playing-yes');
+  controlsEl.classList.add('playing-no');
+  isPlaying = false;
+  console.log('onPressPause');
+};
+
+const onPressDownload = () => {
+  console.log('onPressDownload');
+  originalLinkEl.click();
+};
+
 const onPressEscape = () => {
   goToImg(null);
 };
@@ -207,6 +232,12 @@ const listenForRawClick = () => {
   });
 };
 
+const autoPlay = () => {
+  setInterval(() => {
+    if (isPlaying) onPressNext();
+  }, 5000);
+};
+
 const renderProgress = () => {
   images.forEach((img) => {
     const el = document.createElement('a');
@@ -216,13 +247,6 @@ const renderProgress = () => {
     el.href = `/${img.key}`;
     el.textContent = img.key;
     progressEl.append(el);
-
-    // const el2 = document.createElement('a');
-    // el2.setAttribute('data-img-key', img.key);
-    // el2.classList.add('ss-progress-cell');
-    // el2.href = `/${img.key}`;
-    // el2.textContent = img.key;
-    // progressEl.append(el2);
   });
 };
 
@@ -239,8 +263,9 @@ const onReady = () => {
   startRandomFlipping();
   listenForKeys();
   listenForTargetChange();
-  listenForRawClick();
+  // listenForRawClick();
   renderProgress();
+  autoPlay();
 };
 
 onReady();

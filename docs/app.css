@@ -177,18 +177,40 @@ body.show-ss {
   box-shadow: 0 0 40px 0px rgba(0,0,0,0.3);
 }
 
-.ss-controls {
+.ss-prev-con,
+.ss-next-con {
+  display: none;
   position: fixed;
-  bottom: -40px;
+  bottom: 100px;
+  top: 0;
+  width: 50%;
+}
+.ss-prev-con {
+  left: 0;
+}
+.ss-next-con {
+  right: 0;
+}
+
+.ss-controls-con {
+  position: fixed;
+  bottom: 0px;
   left: 0;
   right: 0;
+  height: 100px;
+}
+.ss-controls {
+  bottom: -45px;
+  left: 0;
+  right: 0;
+  position: absolute;
   height: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
   transition: all 200ms;
 }
-.ss-controls.open, .ss-controls:hover {
+.ss-controls-con:hover .ss-controls, .ss-controls.open, body.is-touch .ss-controls {
   bottom: 0px;
 }
 
@@ -221,6 +243,13 @@ body.show-ss {
   width: 24px;
 }
 
+.ss-controls.playing-no .button-pause {
+  display: none;
+}
+.ss-controls.playing-yes .button-play {
+  display: none;
+}
+
 .ss-progress {
   flex: 1;
   /*border: 1px solid lime;*/
@@ -245,6 +274,7 @@ body.show-ss {
   transition: all 200ms;
   overflow: hidden;
   min-width: 5px;
+  font-size: 12px;
 }
 .ss-progress-cell:last-child {
   border-right: 1px solid #666;
@@ -253,11 +283,17 @@ body.show-ss {
   background-color: #CCC;
   color: #666;
   min-width: 30px;
+  font-size: 14px;
+}
+.ss-progress-cell:focus:not(:hover):not(.active) {
+  min-width: unset;
 }
 .ss-progress-cell.active {
   background-color: #EEE;
   border-color: #EEE;
   color: #666;
+  min-width: 30px;
+  font-size: 14px;
 }
 
 
@@ -273,6 +309,15 @@ body.show-ss {
   }
   .alb-box:not(.m) {
     display: none;
+  }
+  .ss-progress-cell {
+    font-size: 8px;
+  }
+}
+
+@media (max-width:899px) {
+  .ss-progress-cell {
+    font-size: 6px;
   }
 }
 
@@ -294,16 +339,31 @@ body.show-ss {
     padding-bottom: 60px;
   }
 
+  .ss-prev-con,
+  .ss-next-con {
+    display: block;
+    bottom: 50px;
+  }
+
+  .ss-controls-con {
+    height: 50px;
+  }
   .ss-controls {
-    bottom: 0px;
+    height: 49px;
+    position: static;
+    flex-direction: column-reverse;
   }
   .ss-controls-buttons {
-    flex: 1;
+    width: 100%;
+    border-top: none;
   }
   .ss-controls-button {
     flex: 1;
   }
   .ss-progress {
-    display: none;
+    height: 1px;
+    overflow: hidden;
+    width: 100%;
+    flex: none;
   }
 }
