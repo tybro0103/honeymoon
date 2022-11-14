@@ -69,7 +69,7 @@ const fadeSsImg = (el) => {
   setTimeout(() => {
     ssImgEl.style.display = 'block';
     el.classList.add('fade-in');
-  }, 5);
+  }, 20);
 };
 
 const applyImg = (img, cellEl, animate=false) => {
