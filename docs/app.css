@@ -339,7 +339,7 @@ body.show-ss {
  * SMALL
  */
 
-@media (max-height:499px) {
+@media (max-height:599px) {
   .ss-main {
     padding-top: 10px;
   }
